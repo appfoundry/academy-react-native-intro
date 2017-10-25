@@ -1,0 +1,1 @@
+Assets go here. For more information see: https://docs.expo.io/versions/latest/guides/assets.html
