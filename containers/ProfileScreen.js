@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Button, View, Text } from 'react-native'
+import { Text } from 'react-native'
 
 import ViewContainer from './ViewContainer'
+
+import MainButton from '../components/MainButton'
 
 class ProfileScreen extends Component {
   render() {
@@ -11,9 +13,8 @@ class ProfileScreen extends Component {
         <Text>
           { `Profile Screen of ${navigation.state.params.name}.` }
         </Text>
-        <Button onPress={ this._buttonPress }
-                title="Go back!" />
-      </View>
+        <MainButton onPress={ this._buttonPress }
+                    label="Go back!" />
       </ViewContainer>
     )
   }

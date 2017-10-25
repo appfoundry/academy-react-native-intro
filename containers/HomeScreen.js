@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Button } from 'react-native'
+import { Text } from 'react-native'
+
 import ViewContainer from './ViewContainer'
+
+import MainButton from '../components/MainButton'
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -31,9 +34,9 @@ class HomeScreen extends Component {
   _renderProfileButtons = (users) => {
     const userButtons = users.map((user, index) => {
       return (
-        <Button key={ index }
-                onPress={ this._goToProfile(user) }
-                title={ `Go to ${user}'s profile!` } />
+        <MainButton key={index} 
+                    onPress={ this._goToProfile(user) } 
+                    label={`Go to ${user}'s profile!`} />
       )
     })
     return userButtons
