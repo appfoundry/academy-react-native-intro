@@ -1,23 +1,44 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { Platform, View } from 'react-native'
+import { StackNavigator } from 'react-navigation'
+
+import { onAndroid } from './utils/general'
+import createStyleSheet from './utils/stylesheet'
+
+import HomeScreen from './containers/HomeScreen'
+import ProfileScreen from './containers/ProfileScreen'
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View style={ [styles.container, { paddingTop: !onAndroid() ? 0 : Expo.Constants.statusBarHeight }] }>
+        <RootStack/>
       </View>
-    );
+    )
   }
 }
 
-const styles = StyleSheet.create({
+const styles = createStyleSheet({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    android: {
+      backgroundColor: '#eee',
+    },
+    ios: {
+      backgroundColor: '#fff'
+    }
   },
-});
+})
+
+const RootStack = StackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.name}'s Profile`,
+    }),
+  }
+})
+
