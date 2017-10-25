@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button } from 'react-native'
+import ViewContainer from './ViewContainer'
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -18,12 +19,12 @@ class HomeScreen extends Component {
     const {users} = this.state
     const {navigation} = this.props
     return (
-      <View>
+      <ViewContainer>
         <Text>
           Home Screen
         </Text>
         { this._renderProfileButtons(users) }
-      </View>
+      </ViewContainer>
     )
   }
 
